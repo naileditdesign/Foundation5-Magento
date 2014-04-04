@@ -33,9 +33,11 @@
     <!-- Mobile Nav -->
 
 <div class="off-canvas-wrap">
+
     <div class="inner-wrap">
+
         <nav class="tab-bar hide-for-large-up">
-      
+
           <section class="left-small">
             <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
           </section>
@@ -45,12 +47,13 @@
                <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo">
                  <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" />
                </a>
-            
+
           </section>
 
           <section class="right-small">
                 <a class="right-off-canvas-toggle menu-icon" ><span></span></a>
           </section>
+
         </nav>
 
         <aside class="left-off-canvas-menu">
@@ -58,14 +61,14 @@
         </aside>
 
         <aside class="right-off-canvas-menu">
-          
+
           <ul class="off-canvas-list">
 
                 <li><?php echo $this->getChildHtml('store_language') ?></li>
                 <li><?php echo $this->getChildHtml('welcome') ?></li>
 
           </ul>
-           
+
            <?php echo $this->getChildHtml('topLinks') ?>
         </aside>
 
@@ -73,7 +76,7 @@
 
 <!-- Desktop Header -->
 
-<div class="pattern">
+
 
 <section class="main-section">
 
@@ -81,80 +84,84 @@
 
 <div class="row">
 
-<div class="large-12 columns">
+  <div class="large-12 columns">
 
-<div class="top-header">
 
-    <div class="logo large-3 columns">
-            <?php if ($this->getIsHomePage()):?>
-        <h1 class="logo-text"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
-        </h1>
-            <?php else:?>
-        <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" />
-        </a>
-            <?php endif?>
-    </div>
-       
-    
-    <div class="quick-access large-7 columns">
-        
-        <ul class="account-link">
-            <?php if (Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+      <div class="logo large-3 columns">
 
-              <a href="/checkout/cart" class="bask_price">
-     
-                <li>
-                <?php $cart = Mage::getModel('checkout/cart')->getQuote()->getData();if(isset($cart['items_qty'])){echo (int)$cart['items_qty'];}else {echo '0';}?> items - (&pound;<?php $value = Mage::getSingleton('checkout/session')->getQuote()->getGrandTotal(); echo number_format((double)$value, 2 , '.', ',');?>)</a></li>
-                <li><a href="/">Checkout</a></li>
-            
-                <li><a href="/customer/account/">Account</a><a href="/customer/account/logout">Logout</a></li>
-           
-            <?php else: ?>
+              <?php if ($this->getIsHomePage()):?>
 
-                <li class="cart"><?php $cart = Mage::getModel('checkout/cart')->getQuote()->getData();if(isset($cart['items_qty'])){echo (int)$cart['items_qty'];}else {echo '0';}?> items - (&pound;<?php $value = Mage::getSingleton('checkout/session')->getQuote()->getGrandTotal(); echo number_format((double)$value, 2 , '.', ',');?> in total)</a></li>
-                <li><a href="/">Checkout</a></li>
-                <li class="last account"><a href="/customer/account/login/">Sign In / Register</a></li>
-            
-            <?php endif ?>
-        </ul>
+          <h1 class="logo-text"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+          </h1>
+
+              <?php else : ?>
+
+          <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" />
+          </a>
+          
+              <?php endif?>
+      </div>
+
+
+      <div class="quick-access large-7 columns">
+
+          <ul class="account-link">
+
+              <?php if (Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+
+                  <li>
+                  <a href="/checkout/cart" class="bask_price">
+                  <?php $cart = Mage::getModel('checkout/cart')->getQuote()->getData();if(isset($cart['items_qty'])){echo (int)$cart['items_qty'];}else {echo '0';}?> items - (&pound;<?php $value = Mage::getSingleton('checkout/session')->getQuote()->getGrandTotal(); echo number_format((double)$value, 2 , '.', ',');?>)</a>
+                  </li>
+
+                  <li><a href="/">Checkout</a></li>
+
+                  <li><a href="/customer/account/">Account</a><a href="/customer/account/logout">Logout</a></li>
+
+              <?php else: ?>
+
+                  <li class="cart">
+                  <a href="/checkout/cart" class="bask_price">
+                  <?php $cart = Mage::getModel('checkout/cart')->getQuote()->getData();if(isset($cart['items_qty'])){echo (int)$cart['items_qty'];}else {echo '0';}?> items - (&pound;<?php $value = Mage::getSingleton('checkout/session')->getQuote()->getGrandTotal(); echo number_format((double)$value, 2 , '.', ',');?> in total)</a>
+                  </li>
+
+                  <li><a href="/">Checkout</a></li>
+
+                  <li class="last account"><a href="/customer/account/login/">Sign In / Register</a></li>
+
+              <?php endif ?>
+          </ul>
+
+      </div>
+
+  </div>
+
+</div>
+
+
+    <div class="row">
+
+      <div class="large-12 columns">
+
+        <div class="large-9 columns">
+
+            <nav class="top-bar hide-for-small hide-for-medium" data-topbar="">
+
+            <section class="top-bar-section">
+                <?php echo $this->getChildHtml('topMenu') ?>
+            </section>
+            </nav>
 
         </div>
 
-    </div>
+
+        <div class="large-3 columns">
+            <?php echo $this->getChildHtml('topSearch') ?>
+        </div>
+
+      </div>
 
     </div>
-
-    </div> 
-
-    <div class="row">
-    
-    <div class="large-12 columns">
-
-    <div class="large-9 columns">
-
-        <nav class="top-bar hide-for-small hide-for-medium" data-topbar="">
-
-        <section class="top-bar-section">
-            <?php echo $this->getChildHtml('topMenu') ?>
-        </section>
-        </nav>
-
-    </div>
-    
-
-      <div class="large-3 columns">    
-        <?php echo $this->getChildHtml('topSearch') ?>
-    </div>
-
-
-    </div>
-    </div>
-    </div>
-
-    </header>
-
-    </section>
-
 
 
 </header>
