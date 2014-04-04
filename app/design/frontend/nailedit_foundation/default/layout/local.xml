@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+ 
+    <!-- ############# GLOBAL LAYOUT UPDATES ############# -->
+ 
+    <default>
+     
+        <!-- Remove unwanted blocks entirely 
+        <remove name="right.poll"/>
+        <remove name="right.permanent.callout"/>
+        <remove name="left.permanent.callout"/>
+        
+        
+                 
+        
+        
+        <remove name="footer_links"/>-->
+ 
+        <!-- Default Head -->
+
+        <remove name="catalog.compare.sidebar"/> 
+        <remove name="cart_sidebar"/> 
+        <remove name="tags_popular"/>
+        <remove name="paypal.partner.right.logo"/>
+        <remove name="checkout.cart.shipping" />  
+         
+        <reference name="head">
+         
+            <!-- Add extra Stylesheets -->
+
+
+            <action method="addCss">
+                <stylesheet>css/foundation.min.css</stylesheet>
+            </action>
+
+                          <action method="addCss">
+                <stylesheet>css/normalize.css</stylesheet>
+            </action>
+
+              <action method="addCss">
+                <stylesheet>css/styles.css</stylesheet>
+            </action>
+             
+            <!-- Add extra Global JavaScript -->  
+                 
+            <action method="addItem">
+                <type>js</type>
+                <name>/nailedit_foundation/jquery.js</name>
+                <params/>
+            </action>
+
+
+            <!-- Add extra theme directory JavaScript 
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/scripts.js</name>
+                <params/>
+            </action>-->
+             
+            <!-- Link to external JavaScript file (e.g Jquery CDN) 
+            <block type="core/text" name="google.cdn.jquery">
+                <action method="setText">
+                    <text><![CDATA[<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>]]></text>
+                </action>
+            </block>-->
+             
+        </reference>
+
+
+
+        <reference name="before_body_end">
+        <block type="page/html_head" name="extra_js" as="extraJs" after="-" template="page/html/footer/extras.phtml">
+            <action method="addItem"><type>js</type><name>nailedit_foundation/foundation.min.js</name></action>
+
+<action method="addItem"><type>js</type><name>nailedit_foundation/extend.js</name></action>
+
+
+        </block>
+
+        </reference>
+
+
+
+        <!-- Default Header -->
+         
+        <reference name="header">
+            <!-- Example of adding search form and mini cart to the header -->
+            <block type="core/template" name="top.search" as="topSearch" template="catalogsearch/form.mini.phtml"/>
+            <!--<block type="checkout/cart_sidebar" name="topCart" template="checkout/cart/sidebar.phtml"/>--> 
+        </reference>
+         
+        <!-- Default Footer -->
+         
+        <reference name="footer">
+        </reference>
+         
+        <!-- Default Root - Add blocks to your layout phtml files (1,2,3 cols etc) -->       
+         
+        <reference name="root">
+        </reference>
+
+       
+         
+        <!-- Default Left Column -->
+     
+        <reference name="left">
+            <!-- Remove certain elements from Left only 
+            <remove name="left.reports.product.viewed"/>
+            <action method="unsetChild"><name>sale.reorder.sidebar</name></action> -->
+             <block type="catalog/navigation" name="catalog.ads" after="-" template="catalog/navigation/left-adverts.phtml"/>
+        </reference>
+     
+        <!-- Default Right Column -->
+     
+        <reference name="right">
+            <!-- Example of adding an additional navigation block to right column 
+            <block type="catalog/navigation" as="sidenav" template="catalog/navigation/sidenav.phtml" /> -->
+        </reference>
+         
+        <!-- When Customer is Logged out -->
+        <customer_logged_out>
+            <reference name="top.links">
+                <action method="removeLinkByUrl"><url helper="customer/getLoginUrl"/></action>
+            </reference>
+        </customer_logged_out>
+         
+        <!-- When Customer is Logged in -->
+        <customer_logged_in>
+            <reference name="top.links">
+                <action method="removeLinkByUrl"><url helper="customer/getLogoutUrl"/></action>
+            </reference>
+        </customer_logged_in>
+         
+    </default>    
+     
+    <!-- ############# MODULE-SPECIFIC LAYOUT UPDATES ############# -->
+     
+    <!-- Order Success Page -->
+      
+    <checkout_onepage_success translate="label">
+        <reference name="head">
+            <action method="setTitle"><title>Order Success</title></action>
+            <action method="setDescription"><description>Thank you for your purchase!</description></action>
+        </reference>
+    </checkout_onepage_success>
+     
+    <!-- Order Failure Page -->
+     
+    <checkout_onepage_failure translate="label">
+        <reference name="head">
+            <action method="setTitle"><title>Order Cancelled</title></action>
+            <action method="setDescription"><description>Your order has been cancelled and no purchase was made.</description></action>
+        </reference>
+    </checkout_onepage_failure>
+     
+</layout>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Home_page>
+      <version>0.1.0</version>
+    </Home_page>
+  </modules>
+  <global>
+    <page>
+      <layouts>
+        <homepage translate="label">
+          <label>Home_page</label>
+          <template>page/homepage.phtml</template>
+          <layout_handle>home_page</layout_handle>
+        </homepage>
+        <!-- add more layouts here -->
+      </layouts>
+    </page>
+  </global>
+</config>

@@ -1,0 +1,69 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_modern
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+ <!-- Off Canvas End -->
+	
+	</section>
+
+	  <a class="exit-off-canvas"></a>
+
+	 </div>
+	 </div>
+
+ <!-- Off Canvas End -->
+
+<footer>
+	<div class="row">
+		<div class="large-2 columns">
+			<h3>Navigation</h3>
+			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('navigation')->toHtml(); ?>
+		</div>
+		<div class="customer large-4 columns">
+			<h3>Customer Service</h3>
+			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('customer_service')->toHtml(); ?>
+		</div>
+		<div class="newsletter large-3 columns">
+			<h3>Newsletter</h3>
+			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('newsletter')->toHtml(); ?> <?php echo $this->getChildHtml('newsletter') ?>
+		</div>
+		<div class="social large-3 columns">
+			<h3>About Us</h3>
+			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('about_us')->toHtml(); ?>
+		</div>
+	</div>
+</footer>
+
+<div class="lower-footer">
+
+<div class="row">
+<address>
+	<div class="large-12 columns">
+		<div class="copy"><?php echo $this->getCopyright() ?><a href="#"><b> Built By Nailed It Design</b></a></div>
+	</div>
+</address>
+</div>
+
+</div>
