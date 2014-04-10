@@ -2882,25 +2882,105 @@ body.cms-index-index .breadcrumbs { display:none; }
 
 .guest-select {width:305px !important;}
 
-// Small screens
-@media only screen { } /* Define mobile styles */
+/* Below Desktop View Changes 980px and over. */
+@media (max-width: 979px) {}
 
-@media only screen and (max-width: 40em) { } /* max-width 640px, mobile-only styles, use when QAing mobile issues */
 
-// Medium screens
-@media only screen and (min-width: 40.063em) { } /* min-width 641px, medium screens */
+/* Used to alter styles for screens at less than 768px wide like the IPad portrait view. This is where the grid changes. */
+@media (max-width: 768px) {
 
-@media only screen and (min-width: 40.063em) and (max-width: 64em) { } /* min-width 641px and max-width 1024px, use when QAing tablet-only issues */
+}
 
-// Large screens
-@media only screen and (min-width: 64.063em) { } /* min-width 1025px, large screens */
 
-@media only screen and (min-width: 64.063em) and (max-width: 90em) { } /* min-width 1024px and max-width 1440px, use when QAing large screen-only issues */
 
-// XLarge screens
-@media only screen and (min-width: 90.063em) { } /* min-width 1441px, xlarge screens */
+/* Used to alter portrait mobile screens and less than 600px wide like Kindle Fire and IPad mini. */
+@media (max-width: 600px) {
 
-@media only screen and (min-width: 90.063em) and (max-width: 120em) { } /* min-width 1441px and max-width 1920px, use when QAing xlarge screen-only issues */
+/* Basic formatting Cart */
 
-// XXLarge screens
-@media only screen and (min-width: 120.063em) { } /* min-width 1921px, xlarge screens */
+			.checkout-types {
+			float: none;
+			}
+			
+				.cart-table thead, .cart-table tfoot {
+			border-top: 0;
+			}
+			
+			.totals td { font-size:2em; }
+			
+			.cart .totals tfoot th strong, .cart .totals tfoot td strong {
+			font-size: 1.1em;
+			line-height: 2em;
+			}
+
+			.cart .data-table thead,
+            .my-wishlist .data-table thead,
+            .my-account .data-table thead,
+            .order-review .data-table thead { display:none; }
+            
+            .cart .data-table tbody,
+            .my-wishlist .data-table tbody,
+            .my-account .data-table tbody,
+            .order-review .data-table tbody { background:transparent !important; }
+            
+            .col-edit a { background:#ddd; padding:2px; }
+            
+            .cart .data-table tr,
+            .cart .data-table td,
+            .my-wishlist .data-table tr,
+            .my-wishlist .data-table td,
+            .my-account .data-table tr,
+            .my-account .data-table td,
+            .order-review .data-table tr,
+            .order-review .data-table td { border:none !important; background:transparent !important; display:block; width:100%; text-align:left !important; }
+            
+            .cart .data-table tr,
+            .my-wishlist .data-table tr,
+            .my-account .data-table tr,
+            .order-review .data-table tr {  margin-bottom:20px; }
+            
+            .cart .data-table td.col-delete { border-bottom:3px black solid !important;  }
+            
+		/* Highlight first cell in table footer */
+            .my-account .data-table tfoot tr td:first-child,
+            .order-review .data-table tfoot tr td:first-child { font-weight:bold; }
+    
+    	/* Show cell label */
+            .data-table .cell-label {
+                display:inline-block;
+                width:30%;
+                min-width:100px;
+                max-width:140px;
+                margin-right:10px;
+                font-weight:bold;
+            }
+            
+            .cart button.button { margin:0; margin-bottom:20px; text-align:center; float: left !important; clear:left; width:100%; }
+            
+            .discount { margin-top:10px; }
+            .cart .discount .buttons-set {
+					margin: 0;
+					}
+					
+				.cart .totals .checkout-types {
+				text-align: right;
+				margin: 0;
+				}
+
+
+}
+
+/* Used to alter styles for IPhone 5 landscape and less than 568px wide. */
+@media (max-width: 568px) {
+	
+}
+
+/* Used to alter portrait mobile screens and less than 320px wide. */
+@media (max-width: 320px) {
+
+}
+
+
+/* We also use Modernizr to add a .touch class to the body when applicable */
+/* You can prepend this class to anything and it will style only for touch devices */
+.touch .your-element {}
