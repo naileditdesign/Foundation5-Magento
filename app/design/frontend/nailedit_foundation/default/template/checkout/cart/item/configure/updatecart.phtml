@@ -20,7 +20,7 @@
  *
  * @category    design
  * @package     base_default
- * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
@@ -28,12 +28,14 @@
 <?php $_product = $this->getProduct(); ?>
 <?php $buttonTitle = $this->__('Update Cart'); ?>
 <?php if ($_product->isSaleable()): ?>
-    <div class="add-to-cart">
-        <?php if (!$_product->isGrouped()): ?>
-        <label for="qty"><?php echo $this->__('Qty:') ?></label>
-        <input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
-        <?php endif; ?>
-        <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
-        <?php echo $this->getChildHtml('', true, true) ?>
-    </div>
+	<div class="add-to-cart v-centered-content">
+    	<button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart v-center" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
+		<?php if(!$_product->isGrouped()): ?>
+			<div class="qty-wrapper v-center">
+				<label for="qty"><?php echo $this->__('Qty:') ?></label>
+				<input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
+			</div>
+		<?php endif; ?>
+	</div>
+	<div class="paypal-wrapper"><?php echo $this->getChildHtml('', true, true) ?></div>
 <?php endif; ?>
