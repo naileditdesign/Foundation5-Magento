@@ -157,7 +157,10 @@
         
             <div class="large-6 columns hide-for-small">
             	
-              <?php echo $this->getChildHtml('coupon') ?>
+                 <?php /* Extensions placeholder */ ?>
+                <?php echo $this->getChildHtml('checkout.cart.extra') ?>
+                <?php echo $this->getChildHtml('coupon') ?>
+                <?php if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
                
             </div>
             <div class="large-6 columns">
