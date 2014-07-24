@@ -45,6 +45,51 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
             <?php echo $this->htmlEscape($this->getProductName()) ?>
         <?php endif; ?>
         </h2>
+
+        <?php // load the product // ?>
+        <?php $temp_product = Mage::getModel('catalog/product')->load($_item->getProduct()->getId()) ;?>
+        <!-- Paper Size -->
+            <dl class="item-options">
+            <?php if ($temp_product->getPaper_size()) : ?>
+            <dt> 
+            <?php echo $temp_product->getResource()->getAttribute('paper_size')->getStoreLabel(); ?>:
+            </dt>
+            <dd>
+             <?php echo $temp_product->getAttributeText('paper_size') ?>
+            </dd>
+            <?php endif ; ?>
+
+            <!-- Print Time -->
+            <?php if ($temp_product->getPrint_time()) : ?>
+             <dt>
+           <?php echo $temp_product->getResource()->getAttribute('print_time')->getStoreLabel(); ?>:
+             </dt>
+             <dd>
+             <?php echo $temp_product->getAttributeText('print_time') ?>
+             </dd>
+            <?php endif ; ?>
+            
+            <!-- Sides -->
+            <?php if ($temp_product->getSides()) : ?>
+            <dt>
+            <?php echo $temp_product->getResource()->getAttribute('sides')->getStoreLabel(); ?>:
+            </dt>
+            <dd>
+            <?php echo $temp_product->getAttributeText('sides') ?>
+            </dd>
+            <?php endif ; ?>
+
+             <!-- Designs -->
+             <?php if ($temp_product->getDesigns()) : ?>
+            <dt>
+            <?php echo $temp_product->getResource()->getAttribute('designs')->getStoreLabel(); ?>:
+            </dt>
+            <dd>
+           <?php echo $temp_product->getAttributeText('designs') ?>
+            </dd>
+             <?php endif ; ?>
+             </dl>
+
         <?php if ($_options = $this->getOptionList()):?>
         <dl class="item-options">
             <?php foreach ($_options as $_option) : ?>
