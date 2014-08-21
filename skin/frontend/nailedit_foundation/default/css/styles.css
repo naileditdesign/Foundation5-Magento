@@ -1133,13 +1133,13 @@ color: #333333;
 */
 .block-account .block-title {}
 .block-account .block-content { padding: 10px 0; }
-.block-account .block-content ul { list-style: outside disc none; padding-left: 25px; }
+.block-account .block-content ul { list-style: outside disc none; padding-left: 0; margin: 0; }
 .block-account li > * {
 	padding:4px;
 	display:block;
 	text-transform:uppercase;
 }
-.block-account li strong { font-weight:normal; }
+.block-account li { font-weight:normal; list-style: none; float: left; width: 100%; }
 
 
 
