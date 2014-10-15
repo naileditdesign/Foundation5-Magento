@@ -83,16 +83,17 @@
 
     <?php else: ?>
 
-    <?php // Grid Mode ?>
 
+ <?php // Grid Mode ?>
+    <ul class="products-grid medium-block-grid-3 small-block-grid-2">
     <?php $_collectionSize = $_productCollection->count() ?>
     <?php $_columnCount = $this->getColumnCount(); ?>
     <?php $i=0; foreach ($_productCollection as $_product): ?>
         <?php if ($i++%$_columnCount==0): ?>
-        <ul class="products-grid large-block-grid-3">
+        
         <?php endif ?>
             <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
-                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(200); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(220); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
                 <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
                 <?php echo $this->getPriceHtml($_product, true) ?>
                 <div class="actions">
@@ -100,7 +101,7 @@
                     <?php else: ?>
                         <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
                     <?php endif; ?>
-                    <!--<ul class="add-to-links">
+                     <!--<ul class="add-to-links">
                         <?php if ($this->helper('wishlist')->isAllow()) : ?>
                             <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
                         <?php endif; ?>
@@ -108,17 +109,19 @@
                             <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
                         <?php endif; ?>
                     </ul>-->
+                   
                 </div>
             </li>
         <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
-        </ul>
+        
         <?php endif ?>
         <?php endforeach ?>
         <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
     <?php endif; ?>
-
+    </ul>
     <div class="toolbar-bottom">
         <?php echo $this->getToolbarHtml() ?>
     </div>
 </div>
 <?php endif; ?>
+

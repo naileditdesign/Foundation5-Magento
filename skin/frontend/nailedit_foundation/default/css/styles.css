@@ -2335,6 +2335,79 @@ width: 60%;}
 .checkout-multishipping-shipping .box-sp-methods { border:1px solid #e5e5e5; padding:15px; margin-bottom:0; position:relative; }
 
 
+.cart-table tfoot button {
+padding: 0;
+margin: 0;
+padding: 5px 15px;
+background: #ddd;
+margin-left: 20px;
+font-size: 12px;
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
+table thead, table tfoot {
+background: #FFFFFF;
+font-weight: bold;
+}
+
+
+.cart .totals {
+background-color: white;
+border: solid 1px #f1f1f1;
+padding: 20px;
+}
+
+.cart .totals {
+background-color: white;
+border: solid 1px #f1f1f1;
+padding: 20px;
+}
+
+.cart .totals .checkout-types {
+text-align: right;
+margin: 0;
+}
+
+.cart .totals button.button span span { height: auto; }
+
+.checkout-types li a { font-size: 12px; }
+
+.cart .totals .checkout-types li:last-child { margin-bottom: 0; }
+
+.catalog-product-view button.button span { padding: 5px 15px; margin-bottom: 20px; }
+
+.messages {
+overflow: hidden;
+margin: 0 0 10px;
+float: left;
+width: 100%;
+}
+
+.messages li {
+margin: 0 0 1%;
+float: left;
+width: 100%;
+text-align: center;
+padding: 5px 0!important;
+}
+
+.cart .page-title { display: none; }
+
+
+.discount {
+background-color: white;
+border: solid 1px #f1f1f1;
+padding: 20px;
+float: left; width: 100%;
+}
+
+.cart .discount label { display: none; }
+
+.cart .discount input.input-text {
+width: 60%;
+float: left;
+}
 
 /* My Account %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
