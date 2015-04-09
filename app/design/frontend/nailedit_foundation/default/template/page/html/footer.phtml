@@ -24,43 +24,80 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
- <!-- Off Canvas End -->
-	
-	</section>
 
-	  <a class="exit-off-canvas"></a>
-
- <!-- Off Canvas End -->
 
 <footer>
-	<div class="row">
-		<div class="large-2 columns">
-			<h3>Navigation</h3>
-			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('navigation')->toHtml(); ?>
-		</div>
-		<div class="customer large-4 columns">
-			<h3>Customer Service</h3>
-			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('customer_service')->toHtml(); ?>
-		</div>
-		<div class="newsletter large-3 columns">
-			<h3>Newsletter</h3>
-			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('newsletter')->toHtml(); ?> <?php echo $this->getChildHtml('newsletter') ?>
-		</div>
-		<div class="social large-3 columns">
-			<h3>About Us</h3>
-			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('about_us')->toHtml(); ?>
-		</div>
-	</div>
-</footer>
 
-<div class="lower-footer">
+<div class="upper-footer">
 
 <div class="row">
-<address>
-	<div class="large-12 columns">
-		<div class="copy"><?php echo $this->getCopyright() ?><a href="#"><b> Built By Nailed It Design</b></a></div>
-	</div>
-</address>
+	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_information')->toHtml();?>
 </div>
 
 </div>
+
+	<div class="row">
+		<div class="large-3 medium-6 columns">
+			<?php echo $this->getChildHtml('newsletter') ?>
+		</div>
+		<div class="large-3 medium-6 columns">
+
+		<h4>My Account</h4>
+
+		 <?php if (Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+
+		 	<ul>
+		 		<li><a href="/customer/account/"><span>Hi, </span><?php echo Mage::getSingleton('customer/session')->getCustomer()->getFirstname(); ?></a></li>
+		 		<li><a href="/customer/account/">Recent Orders</a></li>
+		 		<li><a href="/contacts">Contact Us</a></li>
+		 		<li><a href="/customer/account/logout">Sign Out</a></li>
+		 	</ul>
+
+		 	<?php else: ?>
+
+		 	<ul>
+		 		<li><a href="/customer/account/">Sign In / Register</a></li>
+		 		<li><a href="/customer/account/">Recent Orders</a></li>
+		 		<li><a href="/contacts">Contact Us</a></li>
+		 		<li><a href="/customer/account/logout">Sign Out</a></li>
+		 	</ul>
+
+		 <?php endif ?>
+		
+		</div>
+		<div class="large-3 medium-6 columns">
+			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_block_1')->toHtml();?>
+		</div>
+		<div class="large-3 medium-6 columns social">
+
+			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_block_2')->toHtml();?>
+			<p>
+			<strong>Payment Methods</strong>
+			</p>
+			<div class="cards"></div>
+
+		</div>
+	</div>
+
+
+	<div class="lower-footer">
+
+	<div class="row">
+
+	<div class="medium-6 columns">
+
+	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_block_below')->toHtml(); ?>
+
+	</div>
+
+	<address class="medium-6 columns">
+
+	<div class="copy"><?php echo $this->getCopyright() ?><a href="#"><b> Built By Nailed It Design</b></a>
+
+	</address>
+
+	</div>
+
+	</div>
+
+</footer>

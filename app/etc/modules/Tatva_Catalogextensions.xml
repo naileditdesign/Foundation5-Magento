@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Tatva_Catalogextensions>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Tatva_Catalogextensions>
+    </modules>
+</config> 

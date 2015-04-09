@@ -36,8 +36,8 @@
 <script type="text/javascript">
     var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
-<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
-<div class="product-view row">
+    <div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+    <div class="product-view row">
     <div class="product-essential">
     <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
         <?php echo $this->getBlockHtml('formkey') ?>
@@ -46,27 +46,30 @@
             <input type="hidden" name="related_product" id="related-products-field" value="" />
         </div>
 
-        <div class="product-img-box large-6 columns">
+        <div class="product-img-box medium-4 columns">
             <?php echo $this->getChildHtml('media') ?>
         </div>
 
-        <div class="product-shop large-6 large-push-1 columns">
+        <div class="product-shop medium-5 columns">
             <div class="product-name">
                 <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
             </div>
 
+            <?php echo $this->getChildHtml('alert_urls') ?>
+            <?php echo $this->getChildHtml('product_type_data') ?>
+            <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+            <?php echo $this->getChildHtml('extrahint') ?>
+
            <?php if ($_product->getShortDescription()):?>
                 <div class="short-description">
-                   <div class="std"><p><?php echo $this->helper('core/string')->truncate($_product->getShortDescription(),150,'', $_remainder, false) ?>... See more info below</p></div>
+                   <div class="std"><p><?php echo $this->helper('core/string')->truncate($_product->getShortDescription(),500,'', $_remainder, false) ?></p>
+                   </div>
                 </div>
             <?php endif;?>
 
-           
-            <?php echo $this->getChildHtml('alert_urls') ?>
-            <?php echo $this->getChildHtml('product_type_data') ?>
-            <?php echo $this->getTierPriceHtml() ?>
-            <?php echo $this->getChildHtml('extrahint') ?>
+        </div>
 
+         <div class="medium-3 columns">
 
 
 
@@ -77,71 +80,87 @@
 
       
     
-        <?php if ($_product->isSaleable() && $this->hasOptions()):?>
-            <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
-        <?php endif;?>
+            <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+            <?php endif;?>
 
-            <?php if (!$this->hasOptions()):?>
-                <div class="add-to-box">
-                    <?php if($_product->isSaleable()): ?>
-                        <?php echo $this->getChildHtml('addtocart') ?>
-                        <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+                <?php if (!$this->hasOptions()):?>
+                    <div class="add-to-box">
+                        <?php if($_product->isSaleable()): ?>
+                            <?php echo $this->getChildHtml('addtocart') ?>
+                            <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+                            <?php endif; ?>
                         <?php endif; ?>
-                    <?php endif; ?>
-                    <?php echo $this->getChildHtml('addto') ?>
+                        <?php echo $this->getChildHtml('addto') ?>
+                    </div>
+                <?php endif; ?>
+
+                <div class="tiers">
+                    <?php echo $this->getTierPriceHtml() ?>
                 </div>
-            <?php endif; ?>
+
+                <div class="related">
+                    <!-- Append Related Here -->
+                </div>
+
+        </div>
+
+        </div>
+
+        <div class="medium-9 columns left">
 
             <div class="product-collateral">
-      <dl class="tabs" data-tab>
-  <dd class="active"><a href="#ProductInfo">Product Information</a></dd>
-  <dd><a href="#FurtherInfo">Delivery</a></dd>
-<dd><a href="#Reviews">Reviews</a></dd>
- 
-</dl>
-<div class="tabs-content">
-  <div class="content active" id="ProductInfo">
-    <?php if ($_product->getDescription()):?>
-     <div class="std"><p><?php echo $_helper->productAttribute($_product, nl2br($_product->getDescription()), 'description') ?></p></div>
-    <?php endif;?>
-  </div>
-  <div class="content" id="FurtherInfo">
-    <div class="additional">
-            <div class="collateral-box">
-             <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('product_delivery')->toHtml() ?>
-            </div>
-    </div>
-  </div>
-    <div class="content" id="Reviews">
-    <div class="additional">
-            <div class="collateral-box">
-            
-      <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+            <dl class="tabs" data-tab role="tablist" data-options="deep-linking: true">
+                <dd role="presentational" class="active"><a class="button overview_icon" href="#ProductInfo">Overview</a></dd>
+                <dd role="presentational" ><a class="button review_icon" href="#Reviews">Reviews</a></dd>
+                <dd role="presentational" ><a class="button delivery_icon" href="#Delivery">Delivery</a></dd>
+                <dd role="presentational" ><a class="button install_icon" href="#Install">Installation</a></dd>     
+            </dl>
+
+            <div class="tabs-content">
+              <div class="content active" id="ProductInfo" role="tabpanel">
+                <?php if ($_product->getDescription()):?>
+                 <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getDescription()), 'description') ?></div>
+                <?php endif;?>
+              </div>
+              <div class="content" id="Reviews" role="tabpanel">
+                <div class="additional">
+                <div class="collateral-box">
+                        
+                  <!-- Append Reviews Here -->
+                    
+                </div>
+                </div>
+
+                </div>
+              <div class="content" id="Delivery" role="tabpanel">
+                <div class="additional">
+                        <div class="collateral-box">
+                         <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('product_delivery')->toHtml() ?>
+                        </div>
+                </div>
+              </div>
+
+              <div class="content" id="Install" role="tabpanel">
+                <div class="additional">
+                        <div class="collateral-box">
+                         <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('product_install')->toHtml() ?>
+                        </div>
+                </div>
+              </div>
+                
+            </div>  
+
+        </div>
+
+        </div>
+
         
-    </div>
-  </div>
-
-
-
-</div>  
-   <?php echo $this->getChildHtml('upsell') ?>
-</div>
-
-
-        <div class="large-16 columns border-top">
-        <!-- AddThis Button BEGIN -->
-        <div class="addthis_toolbox addthis_default_style ">
-        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-        <a class="addthis_button_tweet"></a>
-        <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
-        <a class="addthis_counter addthis_pill_style"></a>
-        </div>
-        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-52a9d0a03138382f"></script>
-        <!-- AddThis Button END -->
-        </div>
 
 
     </form>
+    </div>
+  
     <script type="text/javascript">
     //<![CDATA[
         var productAddToCartForm = new VarienForm('product_addtocart_form');
@@ -193,8 +212,5 @@
         }.bind(productAddToCartForm);
     //]]>
     </script>
-    </div>
-      </div>
- 
 
-</div>
+   <?php echo $this->getChildHtml('upsell') ?>

@@ -12,42 +12,29 @@
 ?>
 <?php if($this->getCollection()->getSize()): ?>
 
-    <?php if($this->getUseContainer()): ?>
-    <div class="pager">
-    <?php endif ?>
-
-    <?php if($this->getShowAmounts()): ?>
-    <p class="amount">
-        <?php if($this->getLastPageNum()>1): ?>
-            <?php echo $this->__('Items %s to %s of %s total', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()) ?>
-        <?php else: ?>
-            <strong><?php echo $this->__('%s Item(s)', $this->getTotalNum()) ?></strong>
-        <?php endif; ?>
-    </p>
-    <?php endif ?>
+<div class="toolbar">
 
     <?php if($this->getShowPerPage()): ?>
     <div class="limiter">
-        <label><?php echo $this->__('Show') ?></label>
+        <label><?php echo $this->__('items per page') ?></label>
         <select onchange="setLocation(this.value)">
         <?php foreach ($this->getAvailableLimit() as  $_key=>$_limit): ?>
             <option value="<?php echo $this->getLimitUrl($_key) ?>"<?php if($this->isLimitCurrent($_key)): ?> selected="selected"<?php endif ?>>
                 <?php echo $_limit ?>
             </option>
         <?php endforeach; ?>
-        </select><span class="per-page"> <?php echo $this->__('per page') ?></span>
+        </select>
     </div>
     <?php endif ?>
 
     <?php if($this->getLastPageNum()>1): ?>
     <div class="pages gen-direction-arrows1">
-        <strong><?php echo $this->__('Page:') ?></strong>
         <ol>
         <?php if (!$this->isFirstPage()): ?>
             <li class="previous">
                 <a class="previous<?php if(!$this->getAnchorTextForPrevious()): ?> i-previous<?php endif;?>" href="<?php echo $this->getPreviousPageUrl() ?>" title="<?php echo $this->__('Previous') ?>">
                     <?php if(!$this->getAnchorTextForPrevious()): ?>
-                    	<?php echo $this->__('Previous'); ?>
+                    	<?php echo $this->__('<'); ?>
                     <?php else: ?>
                         <?php echo $this->getAnchorTextForPrevious() ?>
                     <?php endif;?>
@@ -84,7 +71,7 @@
             <li class="next">
                 <a class="next<?php if(!$this->getAnchorTextForNext()): ?> i-next<?php endif; ?>" href="<?php echo $this->getNextPageUrl() ?>" title="<?php echo $this->__('Next') ?>">
                     <?php if(!$this->getAnchorTextForNext()): ?>
-                    	<?php echo $this->__('Next'); ?>
+                    	<?php echo $this->__('>'); ?>
                         
                     <?php else: ?>
                         <?php echo $this->getAnchorTextForNext() ?>
@@ -97,8 +84,6 @@
     </div>
     <?php endif; ?>
 
-    <?php if($this->getUseContainer()): ?>
-    </div>
-    <?php endif ?>
+</div>
 
 <?php endif ?>

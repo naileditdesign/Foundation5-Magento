@@ -35,10 +35,23 @@
 <?php if($_menu): ?>
 <div class="nav-container">
     <ul class="left" id="nav">
-    <!-- ALTERNATIVE HOME BUTTON HACK -->
-        <li class="home"><a href="<?php echo $this->getUrl('')?>"><?php echo $this->__('Home') ?></a></li>
-        <!-- ALTERNATIVE HOME BUTTON HACK -->
         <?php echo $_menu ?>
     </ul>   
 </div>
-<?php endif ?>
+<?php else : ?>
+<div class="nav-container">
+    <ul class="left" id="nav">
+        <li><a href="#"><span>Add</span></a>
+        </li>
+        <li class="parent has-dropdown"><a href="#"><span>Your</span></a>
+        <ul class="dropdown sub-menu">
+        	<li><a href="#"><span>Dropdown</span></a></li>
+        	<li><a href="#"><span>Menu</span></a></li>
+        	<li><a href="#"><span>Here</span></a></li>
+        </ul>
+        </li>
+        <li><a href="#"><span>Menu</span></a></li>
+        <li><a href="#"><span>Here</span></a></li>
+    </ul>   
+</div>
+<?php endif; ?>

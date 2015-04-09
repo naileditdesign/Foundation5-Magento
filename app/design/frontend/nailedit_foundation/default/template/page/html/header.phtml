@@ -29,139 +29,120 @@
 ?>
 
 
-
-    <!-- Mobile Nav -->
-
-<div class="off-canvas-wrap">
-
-    <div class="inner-wrap">
-
-        <nav class="tab-bar hide-for-large-up">
-
-          <section class="left-small">
-            <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
-          </section>
-
-          <section class="middle tab-bar-section">
-
-               <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo">
-                 <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" />
-               </a>
-
-          </section>
-
-          <section class="right-small">
-                <a class="right-off-canvas-toggle menu-icon" ><span></span></a>
-          </section>
-
-        </nav>
-
-        <aside class="left-off-canvas-menu">
-         <?php echo $this->getChildHtml('topMenu') ?>
-        </aside>
-
-        <aside class="right-off-canvas-menu">
-
-          <ul class="off-canvas-list">
-
-                <li><?php echo $this->getChildHtml('store_language') ?></li>
-                <li><?php echo $this->getChildHtml('welcome') ?></li>
-
-          </ul>
-
-           <?php echo $this->getChildHtml('topLinks') ?>
-        </aside>
-
-<!-- Mobile Nav -->
-
 <!-- Desktop Header -->
 
+<header>
 
+  <div class="row">
 
-<section class="main-section">
+    <div class="large-12 columns">
 
-<header class="hide-for-small hide-for-medium">
+      <div class="left">
 
-<div class="row">
+      <!-- Logo -->
 
-  <div class="large-12 columns">
+        <div class="logo">
 
+         <?php if ($this->getIsHomePage()):?>
 
-      <div class="logo large-3 columns">
-
-              <?php if ($this->getIsHomePage()):?>
-
-          <h1 class="logo-text"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+          <h1 class="logo-text"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
           </h1>
 
-              <?php else : ?>
+        <?php else : ?>
 
-          <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" />
+          <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" ><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" />
           </a>
           
-              <?php endif?>
+        <?php endif?>
       </div>
 
+    </div>
 
-      <div class="quick-access large-7 columns">
 
-          <ul class="account-link">
+<!-- Customer Tools -->
 
-              <?php if (Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+<div class="right">
 
-                  <li>
-                  <a href="/checkout/cart" class="bask_price">
-                  <?php $cart = Mage::getModel('checkout/cart')->getQuote()->getData();if(isset($cart['items_qty'])){echo (int)$cart['items_qty'];}else {echo '0';}?> items - (&pound;<?php $value = Mage::getSingleton('checkout/session')->getQuote()->getGrandTotal(); echo number_format((double)$value, 2 , '.', ',');?>)</a>
-                  </li>
+   <div class="quick-access">
 
-                  <li><a href="/">Checkout</a></li>
+    <ul class="account-link">
 
-                  <li><a href="/customer/account/">Account</a><a href="/customer/account/logout">Logout</a></li>
+      <?php if (Mage::getSingleton('customer/session')->isLoggedIn()): ?>
 
-              <?php else: ?>
+        <li class="cart">
+          <a href="<?php echo $this->getUrl('') ?>checkout/cart" class="bask_price">
+            <span class="icon">
+              <?php $cart = Mage::getModel('checkout/cart')->getQuote()->getData();if(isset($cart['items_qty'])){echo (int)$cart['items_qty'];}else {echo '0';}?> 
+            </span>
+            <span>
+              &pound;<?php $value = Mage::getSingleton('checkout/session')->getQuote()->getGrandTotal(); echo number_format((double)$value, 2 , '.', ',');?>
+            </span>
+          </a>
+        </li>
 
-                  <li class="cart">
-                  <a href="/checkout/cart" class="bask_price">
-                  <?php $cart = Mage::getModel('checkout/cart')->getQuote()->getData();if(isset($cart['items_qty'])){echo (int)$cart['items_qty'];}else {echo '0';}?> items - (&pound;<?php $value = Mage::getSingleton('checkout/session')->getQuote()->getGrandTotal(); echo number_format((double)$value, 2 , '.', ',');?> in total)</a>
-                  </li>
+        <li class="account"><a href="<?php echo $this->getUrl('') ?>customer/account/"><span>Hi, </span><?php echo Mage::getSingleton('customer/session')->getCustomer()->getFirstname(); ?></a>
+          <?php echo $this->getChildHtml('topLinks') ?>
+        </li>
 
-                  <li><a href="/">Checkout</a></li>
+      <?php else: ?>
 
-                  <li class="last account"><a href="/customer/account/login/">Sign In / Register</a></li>
+        <li class="cart">
+          <a href="<?php echo $this->getUrl('') ?>checkout/cart" class="bask_price">
+            <span class="icon">
+              <?php $cart = Mage::getModel('checkout/cart')->getQuote()->getData();if(isset($cart['items_qty'])){echo (int)$cart['items_qty'];}else {echo '0';}?> 
+            </span>
+            <span>
+              &pound;<?php $value = Mage::getSingleton('checkout/session')->getQuote()->getGrandTotal(); echo number_format((double)$value, 2 , '.', ',');?>
+            </span>
+          </a>
+        </li>
 
-              <?php endif ?>
-          </ul>
+        <li class="account">
+          <a href="<?php echo $this->getUrl('') ?>customer/account/login/">Sign In / Register</a>
+          <?php echo $this->getChildHtml('topLinks') ?>
+        </li>
 
-      </div>
+      <?php endif ?>
+    </ul>
 
   </div>
 
 </div>
 
+</div>
 
-    <div class="row">
+<!-- Menu -->
+<div class="medium-12 columns">
 
-      <div class="large-12 columns">
+    <nav class="top-bar" data-topbar role="navigation">
 
-        <div class="large-9 columns">
+      <ul class="title-area">
+        <li class="name">
+          <h1></h1>
+        </li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
 
-            <nav class="top-bar hide-for-small hide-for-medium" data-topbar="">
+      <section class="top-bar-section">
+       <?php echo $this->getChildHtml('topMenu') ?>
 
-            <section class="top-bar-section">
-                <?php echo $this->getChildHtml('topMenu') ?>
-            </section>
-            </nav>
-
+        <!-- Search -->
+        <div class="right">
+       <?php echo $this->getChildHtml('topSearch') ?>
         </div>
 
+     </section>
 
-        <div class="large-3 columns">
-            <?php echo $this->getChildHtml('topSearch') ?>
-        </div>
+   </nav>
 
-      </div>
+</div>
 
-    </div>
+
+
+
+</div>
+
 
 
 </header>

@@ -34,45 +34,62 @@
     $_product = $this->getProduct();
     $_helper = $this->helper('catalog/output');
 ?>
+
+
+
 <?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
-<p class="product-image product-image-zoom">
+<div id="gallery" class="product-image hide-for-small-only zoom-gallery">
+  
     <?php
-        $_img = '<img id="image" src="'.$this->helper('catalog/image')->init($_product, 'image').'" alt="'.$this->escapeHtml($this->getImageLabel()).'" title="'.$this->escapeHtml($this->getImageLabel()).'" />';
-        echo $_helper->productAttribute($_product, $_img, 'image');
-    ?>
-</p>
-<p class="zoom-notice" id="track_hint"><?php echo $this->__('Double click on above image to view full picture') ?></p>
-<div class="zoom">
-    <img id="zoom_out" src="<?php echo $this->getSkinUrl('images/slider_btn_zoom_out.gif') ?>" alt="<?php echo $this->__('Zoom Out') ?>" title="<?php echo $this->__('Zoom Out') ?>" class="btn-zoom-out" />
-    <div id="track">
-        <div id="handle"></div>
-    </div>
-    <img id="zoom_in" src="<?php echo $this->getSkinUrl('images/slider_btn_zoom_in.gif') ?>" alt="<?php echo $this->__('Zoom In') ?>" title="<?php echo $this->__('Zoom In') ?>" class="btn-zoom-in" />
+        $_img = '<a data-group="1" href="'.$this->helper('catalog/image')->init($_product, 'image').'"><img id="main-img" src="'.$this->helper('catalog/image')->init($_product, 'image').'" alt="'.$this->escapeHtml($this->getImageLabel()).'" title="'.$this->escapeHtml($this->getImageLabel()).'" /><span class="zoomer">+</span></a>';
+        echo $_helper->productAttribute($_product, $_img, 'image'); ?>
+       
 </div>
-<script type="text/javascript">
-//<![CDATA[
-    Event.observe(window, 'load', function() {
-        product_zoom = new Product.Zoom('image', 'track', 'handle', 'zoom_in', 'zoom_out', 'track_hint');
-    });
-//]]>
-</script>
-<?php else: ?>
-<p class="product-image">
+<div id="gallery-mobile" class="product-image show-for-small-only">
     <?php
-        $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(300).'" alt="'.$this->escapeHtml($this->getImageLabel()).'" title="'.$this->escapeHtml($this->getImageLabel()).'" />';
-        echo $_helper->productAttribute($_product, $_img, 'image');
-    ?>
-</p>
+        $_img = '<img id="main-img-mobile" src="'.$this->helper('catalog/image')->init($_product, 'image').'" alt="'.$this->escapeHtml($this->getImageLabel()).'" title="'.$this->escapeHtml($this->getImageLabel()).'" />';
+        echo $_helper->productAttribute($_product, $_img, 'image'); ?>
+</div>
+<?php else: ?>
+
+    <div class="product-image">
+    <img src="http://placehold.it/300x410/f1f1f1&text=New%20State%20Store" />
+    </div>
+
 <?php endif; ?>
-<?php if (count($this->getGalleryImages()) > 0): ?>
-<div class="more-views">
-    <h2><?php echo $this->__('More Views') ?></h2>
+
+<?php if (count($this->getGalleryImages()) > 1): ?>
+<div id="gallery-thumbs" class="more-views hide-for-small zoom-gallery">
+
+
     <ul>
     <?php foreach ($this->getGalleryImages() as $_image): ?>
         <li>
-            <a href="#" onclick="popWin('<?php echo $this->getGalleryUrl($_image) ?>', 'gallery', 'width=300,height=300,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes'); return false;" title="<?php echo $this->escapeHtml($_image->getLabel()) ?>"><img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(66); ?>" width="66" height="66" alt="<?php echo $this->escapeHtml($_image->getLabel()) ?>" /></a>
+            <div>
+            <a href="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->resize(); ?>" data-group="1">
+        <img src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->resize(); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel());?>" title="<?php $this->htmlEscape($_image->getLabel());?>" />
+        </a>
+            </div>
+        </li>
+    <?php endforeach; ?>
+    </ul>
+</div>
+
+    <?php endif; ?>
+
+<?php if (count($this->getGalleryImages()) > 1): ?>
+<div id="gallery-thumbs-mobile" class="more-views show-for-small-only">
+    
+    <ul>
+    <?php foreach ($this->getGalleryImages() as $_image): ?>
+       <li>
+      <span>
+        <img src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->resize(); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel());?>" title="<?php $this->htmlEscape($_image->getLabel());?>" />
+     </span>
         </li>
     <?php endforeach; ?>
     </ul>
 </div>
 <?php endif; ?>
+
+

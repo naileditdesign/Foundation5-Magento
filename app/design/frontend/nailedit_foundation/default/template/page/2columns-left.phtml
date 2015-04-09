@@ -41,13 +41,27 @@
     <div class="page">
         <?php echo $this->getChildHtml('header') ?>
         <div class="main-container col2-left-layout">
-            <div class="main row">
-                <div class="t-bar large-12 columns"><?php  echo $this->getLayout()->getBlock("breadcrumbs")->toHtml()?></div>
-                <div class="col-left sidebar large-3 columns"><?php echo $this->getChildHtml('left') ?></div>
-                <div class="col-main large-9 columns">
+            <div class="main-description">
+             <div class="row">
+                <div class="medium-12 columns append">
+                <!-- Append Description and title here -->
+                </div>
+            </div>
+            </div>
+            <div class="main">
+
+                <div class="row">
+
+                <div class="col-left sidebar medium-3 columns">
+                <?php echo $this->getLayout()->getBlock("breadcrumbs")->toHtml()?>
+                <?php echo $this->getChildHtml('left') ?>
+                </div>
+                <div class="col-main medium-9 columns">
                     <?php echo $this->getChildHtml('global_messages') ?>
                     <?php echo $this->getChildHtml('content') ?>
                 </div>
+
+            </div>
                 
             </div>
         </div>

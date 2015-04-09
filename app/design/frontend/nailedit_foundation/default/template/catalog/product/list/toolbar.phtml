@@ -41,16 +41,55 @@
 <?php if($this->getCollection()->getSize()): ?>
 <div class="toolbar">
 
-    <?php if( $this->isExpanded() ): ?>
-    <div class="sorter">
-    
-    	<p class="amount">
+ <div class="toolbar-top">
+     <div class="amount">
             <?php if($this->getLastPageNum()>1): ?>
-				<?php echo $this->__('Items %s to %s of %s total', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()) ?>
+                <?php echo $this->__('Items %s to %s of %s total', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()) ?>
             <?php else: ?>
                 <strong><?php echo $this->__('%s Item(s)', $this->getTotalNum()) ?></strong>
             <?php endif; ?>
-        </p>
+        </div>
+
+        <?php if( $this->isEnabledViewSwitcher() ): ?>
+        <div class="view-mode">
+            <?php $_modes = $this->getModes(); ?>
+            <?php if($_modes && count($_modes)>1): ?>
+            <label><?php echo $this->__('View as') ?>:</label>
+            <?php foreach ($this->getModes() as $_code=>$_label): ?>
+                <?php if($this->isModeActive($_code)): ?>
+                    <span title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?>"><?php echo $_label ?></span>&nbsp;
+                <?php else: ?>
+                    <a href="<?php echo $this->getModeUrl($_code) ?>" title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?>"><?php echo $_label ?></a>&nbsp;
+                <?php endif; ?>
+            <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+        <?php endif; ?>
+
+        <?php //Show pager only if there are pages ?>
+    <?php if ($pagerHtml = trim($this->getPagerHtml())): ?>
+    <div class="pager">
+        <?php echo $pagerHtml; ?>
+    </div>
+    <?php endif; ?>
+
+
+ </div>
+
+
+
+    <?php if( $this->isExpanded() ): ?>
+
+        <div class="limiter">
+            <label><?php echo $this->__('items per page') ?></label>
+            <select onchange="setLocation(this.value)">
+            <?php foreach ($this->getAvailableLimit() as  $_key=>$_limit): ?>
+                <option value="<?php echo $this->getLimitUrl($_key) ?>"<?php if($this->isLimitCurrent($_key)): ?> selected="selected"<?php endif ?>>
+                    <?php echo $_limit ?>
+                </option>
+            <?php endforeach; ?>
+            </select>
+        </div>
         
         <div class="sort-by">
             <label><?php echo $this->__('Sort By') ?></label>
@@ -67,43 +106,15 @@
             	<a class="category-asc v-middle" href="<?php echo $this->getOrderUrl(null, 'desc') ?>" title="<?php echo $this->__('Set Descending Direction') ?>"><?php echo $this->__('Set Descending Direction') ?></a>
             <?php endif; ?>
         </div>
-        
-        <div class="limiter">
-            <label><?php echo $this->__('Show') ?></label>
-            <select onchange="setLocation(this.value)">
-            <?php foreach ($this->getAvailableLimit() as  $_key=>$_limit): ?>
-                <option value="<?php echo $this->getLimitUrl($_key) ?>"<?php if($this->isLimitCurrent($_key)): ?> selected="selected"<?php endif ?>>
-                    <?php echo $_limit ?>
-                </option>
-            <?php endforeach; ?>
-            </select><span class="per-page"> <?php echo $this->__('per page') ?></span>
-        </div>
-        
-        <?php if( $this->isEnabledViewSwitcher() ): ?>
-        <p class="view-mode">
-            <?php $_modes = $this->getModes(); ?>
-            <?php if($_modes && count($_modes)>1): ?>
-            <label><?php echo $this->__('View as') ?>:</label>
-            <?php foreach ($this->getModes() as $_code=>$_label): ?>
-                <?php if($this->isModeActive($_code)): ?>
-                    <span title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?>"><?php echo $_label ?></span>&nbsp;
-                <?php else: ?>
-                    <a href="<?php echo $this->getModeUrl($_code) ?>" title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?>"><?php echo $_label ?></a>&nbsp;
-                <?php endif; ?>
-            <?php endforeach; ?>
-            <?php endif; ?>
-        </p>
-        <?php endif; ?>
-        
-    </div> <!-- end: sorter -->
+    
+
     <?php endif; ?>
     
-    <?php //Show pager only if there are pages ?>
-	<?php if ($pagerHtml = trim($this->getPagerHtml())): ?>
-    <div class="pager">
-        <?php echo $pagerHtml; ?>
+    <div class="toolbar-compare">
+    
+    <!-- Append Compare Here -->
+
     </div>
-    <?php endif; ?>
     
 </div>
 <?php endif ?>

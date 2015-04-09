@@ -100,10 +100,9 @@
                 <tfoot>
                     <tr>
                         <td colspan="50" class="a-right">
-                           
                             <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Cart'); ?>" class="button btn-update right"><?php echo $this->__('Update Shopping Cart'); ?></button>
 							 <?php if($this->getContinueShoppingUrl()): ?>
-                                <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue right" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')"><?php echo $this->__('Continue Shopping') ?></button>
+                                <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue left" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')"><?php echo $this->__('Continue Shopping') ?></button>
                             <?php endif; ?>
 							<?php /*?>
                             <a id="link-cart-update" href="#">Test submit</a>
@@ -149,13 +148,14 @@
                     <?php echo $this->getItemHtml($_item) ?>
                 <?php endforeach ?>
                 </tbody>
-                </fieldset>
-            </table>
-            
+               </table>
+            <script type="text/javascript">decorateTable('shopping-cart-table')</script>
+        </fieldset>
+    </form>
             </div>
-    <div class="row">
+    
         
-            <div class="large-6 columns hide-for-small">
+            <div class="medium-6 columns hide-for-small">
             	
                  <?php /* Extensions placeholder */ ?>
                 <?php echo $this->getChildHtml('checkout.cart.extra') ?>
@@ -163,7 +163,7 @@
                 <?php if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
                
             </div>
-            <div class="large-6 columns">
+            <div class="medium-6 columns">
                 <?php /* Extensions placeholder */ ?>
                 <?php echo $this->getChildHtml('checkout.cart.extra') ?>
               
@@ -182,14 +182,10 @@
                 </div>
             </div>
             
-            <div class="small-12 columns show-for-small">
-            	
-              <?php echo $this->getChildHtml('coupon') ?>
-               
-            </div>
+        
        
-    </div>
-    <div class="row">
+
+    <div class="small-12 columns">
     	 <?php if($_crosssell = $this->getChildHtml('crosssell')): ?>
                     <?php echo $_crosssell; ?>
                 <?php else: ?>
@@ -198,3 +194,6 @@
     </div>
 </div>
 </div>
+
+
+

@@ -5,7 +5,16 @@
 $(document).foundation();
 
 
-  /* Dropdown */
+
+	$('#tweecool').tweecool({
+	//settings
+	username : 'Clear_Vis',
+	limit : 3,
+	profile_image : false
+	});
+
+
+  	/* Dropdown */
 
 
 	$('.top-bar ul').parent('li').addClass('has-dropdown not-click');
@@ -14,52 +23,82 @@ $(document).foundation();
 
 	$('ul.dropdown li:last-child').addClass('last');
 
-	
-	$('.top-bar li.nav-1').addClass('has-dropdown not-click');
 
 	$('.home-cat li,.products-grid li').hover(
        function(){ $(this).addClass('active') },
        function(){ $(this).removeClass('active') }
        );
 
+	// Highlight first word
 
-	$('.static-menu').hide();
-	$('.nav-1').click(function() {
-    $('.static-menu').slideDown('slow');
-    return false;
-  	});
-
-	$('.static-menu a.close').click(function() {
-    $('.static-menu').slideUp('fast');
-    return false;
-  	});
-
-	// Tbar Mover
-
-	$('.category-title').appendTo('.spanheader');
-	$('.category-image').appendTo('.spanheader');
-
-	$('.image-yes').appendTo('.spanheader .category-image');
-	
-
-	// Wrap h3 in header
-
-	$( ".category-description h3" ).wrapAll( "<div class='ribbon'><div class='ribbon-stitches-top'><strong class='ribbon-content'></strong></div><div class='ribbon-stitches-bottom'></div></div>");
+	$('h3,.page-title h1').each(function() {
+	var jqt = $(this);
+	var txt = jqt.text();
+	jqt.html('<span>'+txt.substring(0,(txt.indexOf(" ")))+'</span>'+ txt.substring((txt.indexOf(" "))));
+	});
 
 
+
+	// Append Category Header
+
+	$('.catalog-category-view .category-title').prependTo('.main-description .append');
+	$('.catalog-category-view .category-description').appendTo('.main-description .append');
+
+	// Append Compare & Product grid stuff
+
+	$('.block-compare').appendTo('.toolbar-compare');
+
+	$('.products-grid li .price-box,.product-view .actions .price-box').append('<span class="vat">inc VAT</span>');
 
 /* Off Canvas */
 
 $('.right-off-canvas-menu ul.links,.left-off-canvas-menu ul').addClass('off-canvas-list');
 
+// Show Hide Home
+
+$('.featured_block .title li:first-child a').addClass('active');
+$('.featured_block .items-new').addClass('show');
+
+$('.featured_block .title li a').click(function() {
+  $('.featured_block .title li a').removeClass('active');    
+  $(this).addClass('active');
+}); 
+
+
+$('.featured_block .products-grid').removeClass('medium-block-grid-3');
+$('.featured_block .products-grid').addClass('medium-block-grid-6');
+
+
+
+  
+   $('.featured_block .new-products').click(function() {
+    $('.featured_block .items-new').addClass('show');
+    $('.featured_block .items-best').removeClass('show');
+    $('.featured_block .items-featured').removeClass('show');
+    return false;
+  });
+
+    $('.featured_block .best-sellers').click(function() {
+    $('.featured_block .items-best').addClass('show');
+    $('.featured_block .items-new').removeClass('show');
+    $('.featured_block .items-featured').removeClass('show');
+    return false;
+  });
+  
+    $('.featured_block .special-offers').click(function() {
+    $('.featured_block .items-featured').addClass('show');
+    $('.featured_block .items-new').removeClass('show');
+    $('.featured_block .items-best').removeClass('show');
+    return false;
+  });
 
 // Slider 
 
 $('.single-item').slick({
-  dots: true,
+  dots: false,
   infinite: true,
+  arrows: false,
   speed: 500,
-  fade: true,
   autoplay:true
 });
 
@@ -67,72 +106,67 @@ $('.single-item').slick({
 
 /* Accordion Layer Navextension */
 
-$ (document).ready(function(){
-$("#narrow-by-list > dt").click(function(){
-if(false == $(this).next().is(':visible')) {
-$('#narrow-by-list dd').slideUp(300);
-}
-$(this).next().slideToggle(300);
-});
-$('#narrow-by-list dd').hide();
-$('#narrow-by-list dd:eq(0)').show();
+$('#narrow-by-list dt').wrapInner('<span />');
+
+$('#narrow-by-list dt:first-of-type').addClass( "open" );
+
+$( "#narrow-by-list dt" ).click(function() {
+  $( this ).toggleClass( "open" );
 });
 
 
 /* Product Page */
 
-$(".quan").appendTo(".product-options");
 
-$( ".lower-options .regular-price" ).prepend( "<span class='ttos'>Total (Excl. Delivery)</span>" );
+// Zoomer for Product page
+  
+  $('.zoom-gallery').magnificPopup({
+    delegate: 'a',
+    type: 'image',
+    closeOnContentClick: false,
+    closeBtnInside: false,
+    mainClass: 'mfp-with-zoom mfp-img-mobile',
+    image: {
+      verticalFit: true,
+      titleSrc: function(item) {
+        //return item.el.attr('title') + ' &middot; <a class="image-source-link" href="'+item.el.attr('data-source')+'" target="_blank">image source</a>';
+      }
+    },
+    gallery: {
+      enabled: true
+    },
+    zoom: {
+      enabled: true,
+      duration: 300, // don't foget to change the duration also in CSS
+      opener: function(element) {
+        return element.find('img');
+      }
+    }
+    
+  });
 
-if ($('.lower-options').hasClass('product-options-bottom')) {
-       $(".product-options-bottom").appendTo(".step-content");
-};
-
+var idx = document.URL.indexOf("#");
+    if (idx != -1) {
+        var hash = document.URL.substring(idx + 1);
+        $(".tabs").children("dd").each(function() {
+            var id = $(this).find("a").attr("href").substring(1);
+            var $container = $("#" + id);
+            $(this).removeClass("active");
+            $container.removeClass("active");
+            if (id == hash || $container.find("#" + hash).length) {
+                $(this).addClass("active");
+                $container.addClass("active");
+            }
+        });
+    }
 
 
 // Append Options
 
-if ($('.block-main').hasClass('dt-step1')) {
-       $(".dt-step1").appendTo(".step1-block");
-};
-
-if ($('.block-main').hasClass('dt-step2')) {
-       $(".dt-step2").appendTo(".step2-block");
-};
-
-if ($('#product-options-wrapper').hasClass('product-options')) {
-       $(".product-options dl.last").appendTo(".step2-block");
-};
-
-// Li Clicker
-
-		$(".dt-step1 li input:radio").hide().click(function(e){
-		    e.stopPropagation();
-		});
-		$(".dt-step1 li").click(function(e){
-		    $(this).closest(".dt-step1").find("li").removeClass("selected");
-			
-			$(this).addClass("selected").find("input:radio").click();
-		});
+$('.box-collateral.box-reviews').appendTo('.tabs-content #Reviews .collateral-box');
+$('.block-related').appendTo('.product-view .related');
 
 
-		$(".dt-step2 li input:radio").hide().click(function(e){
-		    e.stopPropagation();
-		});
-		$(".dt-step2 li").click(function(e){
-		    $(this).closest(".dt-step2").find("li").removeClass("selected");
-			
-			$(this).addClass("selected").find("input:radio").click();
-		});
-
-		$('.block-main input.checkbox').click(function(){
-		  if($(this).is(':checked')){
-		    $(this).parent().addClass('selected');
-		  }else{
-		    $(this).parent().removeClass('selected');
-		  }
-		});
 
 
 }(window.jQuery);

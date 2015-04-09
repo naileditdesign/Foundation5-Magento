@@ -9,20 +9,17 @@
         <remove name="right.poll"/>
         <remove name="right.permanent.callout"/>
         <remove name="left.permanent.callout"/>
-        
-        
-                 
-        
-        
         <remove name="footer_links"/>-->
  
         <!-- Default Head -->
 
-        <remove name="catalog.compare.sidebar"/> 
+        
         <remove name="cart_sidebar"/> 
         <remove name="tags_popular"/>
         <remove name="paypal.partner.right.logo"/>
-        <remove name="checkout.cart.shipping" />  
+        <remove name="checkout.cart.shipping" /> 
+        <remove name="left.newsletter" /> 
+        <remove name="currency" />
          
         <reference name="head">
          
@@ -33,7 +30,7 @@
                 <stylesheet>css/foundation.min.css</stylesheet>
             </action>
 
-                          <action method="addCss">
+            <action method="addCss">
                 <stylesheet>css/normalize.css</stylesheet>
             </action>
 
@@ -70,9 +67,12 @@
 
         <reference name="before_body_end">
         <block type="page/html_head" name="extra_js" as="extraJs" after="-" template="page/html/footer/extras.phtml">
-            <action method="addItem"><type>js</type><name>nailedit_foundation/foundation.min.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/foundation.min.js</name></action>
 
-<action method="addItem"><type>js</type><name>nailedit_foundation/extend.js</name></action>
+        <!--<action method="addItem"><type>skin_js</type><name>js/slick.min.js</name><params/></action>-->
+        <!--<action method="addItem"><type>skin_js</type><name>js/tweetcool.js</name><params/></action>-->
+        <!--<action method="addItem"><type>skin_js</type><name>js/mag-popup.min.js</name><params/></action>-->
+        <!--<action method="addItem"><type>skin_js</type><name>js/extend.js</name><params/></action>-->
 
 
         </block>
@@ -92,14 +92,13 @@
         <!-- Default Footer -->
          
         <reference name="footer">
+             <block type="newsletter/subscribe" name="newsletter" template="newsletter/subscribe.phtml"/>
         </reference>
          
         <!-- Default Root - Add blocks to your layout phtml files (1,2,3 cols etc) -->       
          
         <reference name="root">
         </reference>
-
-       
          
         <!-- Default Left Column -->
      
@@ -152,5 +151,6 @@
             <action method="setDescription"><description>Your order has been cancelled and no purchase was made.</description></action>
         </reference>
     </checkout_onepage_failure>
+
      
 </layout>

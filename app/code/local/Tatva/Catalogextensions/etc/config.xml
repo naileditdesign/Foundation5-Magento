@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Tatva_Catalogextensions>
+            <version>0.1.0</version>
+        </Tatva_Catalogextensions>
+    </modules>
+    <frontend>
+        <routers>
+            <catalogextensions>
+                <use>standard</use>
+                <args>
+                    <module>Tatva_Catalogextensions</module>
+                    <frontName>catalogextensions</frontName>
+                </args>
+            </catalogextensions>
+        </routers>
+        <layout>
+            <updates>
+                <catalogextensions>
+                    <file>catalogextensions/catalogextensions.xml</file>
+                </catalogextensions>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+			<catalogextensions>
+				<use>admin</use>
+				<args>
+					<module>Tatva_Catalogextensions</module>
+					<frontName>catalogextensions</frontName>
+				</args>
+			</catalogextensions>
+        </routers>
+    </admin>
+    <adminhtml>
+	   <acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<catalogextensions translate="title" module="catalogextensions">
+											<title>Catalogextensions Configuration</title>
+										</catalogextensions>
+									</children>
+								</config>
+							</children>
+						</system>
+						<Tatva_Catalogextensions>
+							<title>Catalogextensions Module</title>
+							<sort_order>10</sort_order>
+						</Tatva_Catalogextensions>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<catalogextensions>
+					<file>catalogextensions.xml</file>
+				</catalogextensions>
+			</updates>
+		</layout>
+    </adminhtml>   
+    <global>
+        <models>
+            <catalogextensions>
+                <class>Tatva_Catalogextensions_Model</class>
+                <resourceModel>catalogextensions_mysql4</resourceModel>
+            </catalogextensions>
+            <catalogextensions_mysql4>
+                <class>Tatva_Catalogextensions_Model_Mysql4</class>
+                <entities>
+                    <catalogextensions>
+                        <table>catalogextensions</table>
+                    </catalogextensions>
+                </entities>
+            </catalogextensions_mysql4>
+        </models>
+        <resources>
+            <catalogextensions_setup>
+                <setup>
+                    <module>Tatva_Catalogextensions</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </catalogextensions_setup>
+            <catalogextensions_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </catalogextensions_write>
+            <catalogextensions_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </catalogextensions_read>
+        </resources>
+        <blocks>
+            <catalogextensions>
+                <class>Tatva_Catalogextensions_Block</class>
+            </catalogextensions>
+        </blocks>
+        <helpers>
+            <catalogextensions>
+                <class>Tatva_Catalogextensions_Helper</class>
+            </catalogextensions>
+        </helpers>
+    </global>
+	<default>
+		<catalogextensions>
+			<config1>
+				<active>0</active>
+				<max_product>3</max_product>
+				<title>Bestseller Products</title>
+			</config1>
+			<config2>
+				<active>0</active>
+				<max_product>3</max_product>
+				<title>Fetured Products</title>
+			</config2>
+			<config3>
+				<active>0</active>
+				<max_product>3</max_product>
+				<title>Most Viewed Products</title>
+			</config3>
+			<config4>
+				<active>0</active>
+				<max_product>3</max_product>
+				<title>New Products</title>
+				<type>Recently Added</type>
+			</config4>
+			<config5>
+				<active>0</active>
+				<title>All Products</title>
+			</config5>
+			<config6>
+				<active>0</active>
+				<max_product>3</max_product>
+				<title>Promotional Products</title>
+			</config6>
+			<config7>
+				<active>0</active>
+				<max_product>3</max_product>
+				<title>Recently Ordered Products</title>
+			</config7>
+		</catalogextensions>
+	</default>
+</config>

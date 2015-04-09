@@ -1,0 +1,19 @@
+<?php $banner_name = $this->getBannername() ;?>
+<div class="single-item slider">
+
+<?php $slide = 1; ?>
+<?php $static_block = $banner_name . $slide; ?>
+
+
+<?php while ( Mage::getModel('cms/block')->load($static_block)->getIsActive()) {
+
+	echo '<div>';
+	echo $this->getLayout()->createBlock('cms/block')->setBlockId($static_block)->toHtml();
+	echo '</div>';
+	$slide++;
+	$static_block = $banner_name . $slide;
+
+}
+
+?>
+</div>

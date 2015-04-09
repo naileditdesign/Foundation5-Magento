@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+    <default translate="label" module="page">
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/catalogextensions/catalogextensions.css</stylesheet></action>
+        </reference>
+    </default>
+	
+    <catalogextensions_index_bestsellers>
+        <reference name="content">
+            <block type="catalogextensions/bestsellers_list" name="bestsellers_list" template="catalog/product/list.phtml" >
+				<block type="catalog/product_list_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
+                	<block type="page/html_pager" name="product_list_toolbar_pager" />
+                </block>
+                <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+            </block>
+        </reference>
+    </catalogextensions_index_bestsellers>
+	
+	<catalogextensions_index_featured>
+        <reference name="content">
+			<block type="catalogextensions/featured_list" name="featured_list" template="catalog/product/list.phtml" >
+				<block type="catalog/product_list_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
+                	<block type="page/html_pager" name="product_list_toolbar_pager" />
+                </block>
+                <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+            </block>
+		</reference>
+    </catalogextensions_index_featured>
+	
+	<catalogextensions_index_mostviewed>
+        <reference name="content">
+			<block type="catalogextensions/mostviewed_list" name="mostviewed_list" template="catalog/product/list.phtml" >
+				<block type="catalog/product_list_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
+                	<block type="page/html_pager" name="product_list_toolbar_pager" />
+                </block>
+                <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+            </block>
+		</reference>
+    </catalogextensions_index_mostviewed>
+	
+	<catalogextensions_index_newproduct>
+        <reference name="content">
+			<block type="catalogextensions/newproduct_list" name="newrecent_list" template="catalog/product/list.phtml" >
+				<block type="catalog/product_list_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
+                	<block type="page/html_pager" name="product_list_toolbar_pager" />
+                </block>
+                <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+            </block>
+		</reference>
+    </catalogextensions_index_newproduct>
+	
+	<catalogextensions_index_allproduct>
+		<reference name="content">
+        	<block type="catalogextensions/allproducts_list" name="product_all_list" template="catalog/product/list.phtml">
+            	<block type="catalog/product_list_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
+                	<block type="page/html_pager" name="product_list_toolbar_pager"/>
+                </block>
+                <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+            </block>
+        </reference>
+    </catalogextensions_index_allproduct>
+	
+	<catalogextensions_index_promotional>
+		<reference name="content">
+        	<block type="catalogextensions/promotional_list" name="promotional_list" template="catalog/product/list.phtml">
+            	<block type="catalog/product_list_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
+                	<block type="page/html_pager" name="product_list_toolbar_pager"/>
+                </block>
+                <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+            </block>
+        </reference>
+    </catalogextensions_index_promotional>
+
+	<catalogextensions_index_recentlyordered>
+		<reference name="content">
+        	<block type="catalogextensions/lastordered_list" name="lastordered_list" template="catalog/product/list.phtml">
+            	<block type="catalog/product_list_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
+                	<block type="page/html_pager" name="product_list_toolbar_pager"/>
+                </block>
+                <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+            </block>
+        </reference>
+    </catalogextensions_index_recentlyordered>
+</layout> 
