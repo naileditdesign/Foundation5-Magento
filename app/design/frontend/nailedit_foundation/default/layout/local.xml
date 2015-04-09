@@ -20,11 +20,17 @@
         <remove name="checkout.cart.shipping" /> 
         <remove name="left.newsletter" /> 
         <remove name="currency" />
+
+        <reference name="head">
+            <action method="removeItem">
+                <type>skin_css</type>
+                <name>css/styles.css</name>
+            </action>
+        </reference>
          
         <reference name="head">
          
             <!-- Add extra Stylesheets -->
-
 
             <action method="addCss">
                 <stylesheet>css/foundation.min.css</stylesheet>
@@ -35,7 +41,7 @@
             </action>
 
               <action method="addCss">
-                <stylesheet>css/styles.css</stylesheet>
+                <stylesheet>css/skin.css</stylesheet>
             </action>
              
             <!-- Add extra Global JavaScript -->  
