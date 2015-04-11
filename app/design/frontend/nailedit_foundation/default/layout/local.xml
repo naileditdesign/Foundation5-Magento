@@ -29,29 +29,27 @@
         </reference>
          
         <reference name="head">
-         
-            <!-- Add extra Stylesheets -->
 
-            <action method="addCss">
-                <stylesheet>css/foundation.min.css</stylesheet>
-            </action>
-
-            <action method="addCss">
-                <stylesheet>css/normalize.css</stylesheet>
-            </action>
-
-              <action method="addCss">
-                <stylesheet>css/skin.css</stylesheet>
-            </action>
-             
             <!-- Add extra Global JavaScript -->  
                  
-            <action method="addItem">
-                <type>js</type>
-                <name>/nailedit_foundation/jquery.js</name>
-                <params/>
-            </action>
+            <action method="addItem"><type>js</type><name>/nailedit_foundation/jquery.js</name><params/></action>
 
+         
+            <!-- Add foundation Stylesheets -->
+
+            <action method="addCss"><stylesheet>css/foundation.min.css</stylesheet></action>
+
+            <action method="addCss"><stylesheet>css/normalize.css</stylesheet></action>
+
+            <!-- Font Awesome -->
+
+            <action method="addCss"><stylesheet>css/font-awesome/css/font-awesome.min.css</stylesheet></action>
+
+            <!-- Overiding Skin -->
+
+            <action method="addCss"><stylesheet>css/skin.css</stylesheet></action>
+             
+            
 
             <!-- Add extra theme directory JavaScript 
             <action method="addItem">
@@ -78,7 +76,7 @@
         <!--<action method="addItem"><type>skin_js</type><name>js/slick.min.js</name><params/></action>-->
         <!--<action method="addItem"><type>skin_js</type><name>js/tweetcool.js</name><params/></action>-->
         <!--<action method="addItem"><type>skin_js</type><name>js/mag-popup.min.js</name><params/></action>-->
-        <!--<action method="addItem"><type>skin_js</type><name>js/extend.js</name><params/></action>-->
+        <action method="addItem"><type>skin_js</type><name>js/extend.js</name><params/></action>
 
 
         </block>
