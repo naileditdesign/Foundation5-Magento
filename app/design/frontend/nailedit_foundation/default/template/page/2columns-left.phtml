@@ -40,28 +40,21 @@
     <?php echo $this->getChildHtml('global_notices') ?>
     <div class="page">
         <?php echo $this->getChildHtml('header') ?>
-        <div class="main-container col2-left-layout">
-            <div class="main-description">
-             <div class="row">
-                <div class="medium-12 columns append">
-                <!-- Append Description and title here -->
-                </div>
-            </div>
-            </div>
-            <div class="main">
+        <div class="main-container col2-left-layout row">
 
-                <div class="row">
+            <div class="main">
+                <div class="large-12 columns">
+                <?php echo $this->getLayout()->getBlock("breadcrumbs")->toHtml()?>
+                </div>
 
                 <div class="col-left sidebar medium-3 columns">
-                <?php echo $this->getLayout()->getBlock("breadcrumbs")->toHtml()?>
+                
                 <?php echo $this->getChildHtml('left') ?>
                 </div>
                 <div class="col-main medium-9 columns">
                     <?php echo $this->getChildHtml('global_messages') ?>
                     <?php echo $this->getChildHtml('content') ?>
                 </div>
-
-            </div>
                 
             </div>
         </div>

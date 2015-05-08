@@ -41,7 +41,7 @@ $enable = Mage::getStoreConfig('catalogextensions/config1/active',$code);
             <div class="titlemain"><?php echo Mage::getStoreConfig('catalogextensions/config1/title',$code); ?></div>
             <div class="viewall"><a href="<?php echo $this->getUrl('catalogextensions/index/bestsellers'); ?>"><?php echo $this->__('View All') ?></a></div>
 </div>
-<?php echo $this->getLayout()->createBlock('catalogextensions/bestsellers_home_list')->setTemplate('catalog/product/list_home.phtml')->toHtml(); ?>
+<?php echo $this->getLayout()->createBlock('catalogextensions/bestsellers_home_list')->setTemplate('catalog/product/list.phtml')->toHtml(); ?>
 <?php }  ?>
 
 

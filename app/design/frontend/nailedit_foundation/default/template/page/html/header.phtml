@@ -71,6 +71,7 @@
 
         <li class="cart">
           <a href="<?php echo $this->getUrl('') ?>checkout/cart" class="bask_price">
+          <i class="fa fa-shopping-cart"></i>
             <span class="icon">
               <?php $cart = Mage::getModel('checkout/cart')->getQuote()->getData();if(isset($cart['items_qty'])){echo (int)$cart['items_qty'];}else {echo '0';}?> 
             </span>
@@ -80,7 +81,9 @@
           </a>
         </li>
 
-        <li class="account"><a href="<?php echo $this->getUrl('') ?>customer/account/"><span>Hi, </span><?php echo Mage::getSingleton('customer/session')->getCustomer()->getFirstname(); ?></a>
+        <li class="account"><a href="<?php echo $this->getUrl('') ?>customer/account/">
+          <i class="fa fa-user"></i>
+        <span>Hi, </span><?php echo Mage::getSingleton('customer/session')->getCustomer()->getFirstname(); ?></a>
           <?php echo $this->getChildHtml('topLinks') ?>
         </li>
 
@@ -88,17 +91,21 @@
 
         <li class="cart">
           <a href="<?php echo $this->getUrl('') ?>checkout/cart" class="bask_price">
+          <i class="fa fa-shopping-cart"></i>
             <span class="icon">
               <?php $cart = Mage::getModel('checkout/cart')->getQuote()->getData();if(isset($cart['items_qty'])){echo (int)$cart['items_qty'];}else {echo '0';}?> 
             </span>
             <span>
-              &pound;<?php $value = Mage::getSingleton('checkout/session')->getQuote()->getGrandTotal(); echo number_format((double)$value, 2 , '.', ',');?>
+              <?php $value = Mage::getSingleton('checkout/session')->getQuote()->getGrandTotal(); echo number_format((double)$value, 2 , '.', ',');?>
             </span>
           </a>
         </li>
 
         <li class="account">
-          <a href="<?php echo $this->getUrl('') ?>customer/account/login/">Sign In / Register</a>
+          <a href="<?php echo $this->getUrl('') ?>customer/account/login/">
+          <i class="fa fa-user"></i>
+            <span>Sign In / Register</span>
+            </a>
           <?php echo $this->getChildHtml('topLinks') ?>
         </li>
 
