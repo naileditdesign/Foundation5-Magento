@@ -1923,6 +1923,50 @@ background: none;
 
 .discount { background: white; border: 1px #ddd solid; padding:5px 10px; }
 
+/* Multiplpe Ship */
+
+.multiple-checkout table { width: 100%; }
+
+.multiple-checkout address {   line-height: 1.5; }
+
+.multiple-checkout h2 { font-size: 1rem; }
+
+.multiple-checkout .col-narrow  h3 { width: 100%; float: left; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
+
+.multiple-checkout .page-title { float: left; width: 100%; }
+
+.multiple-checkout .page-title.title-buttons button { float:right; }
+
+.multiple-checkout .box {   
+	float: left;
+	width: 100%;
+  	padding: 20px;
+  	background: #f1f1f1;
+  	border: 1px solid #ddd;
+  	margin-right: 10px; 
+  	margin-bottom: 10px;
+}
+
+.multiple-checkout .box.box-sp-methods { 
+	background: none;
+	 }
+
+.multiple-checkout .col-wide { float: right; width: 60%; } 
+.multiple-checkout .col-narrow { float: left; width: 39%; margin-right: 1%; }
+
+#multiship-addresses-table td:first-child,
+#multiship-addresses-table td:nth-last-child(2)  { width: 45%; }
+
+.checkout-progress { width: 100%; float: left; margin-top: 20px; }
+
+.checkout-progress li { float:left; margin-right: 10px; width: 18%; }
+
+.checkout-progress li span { display: block; background: #ddd; padding: 5px 10px; border-bottom: #f1f1f1; }
+
+.checkout-progress li.active span { background: #7197c3; color: white; }
+
+.totals .checkout-types a { float: right; margin-bottom: 20px; }
+
 /* OPC */
 
 .checkout-onepage-index .page-title { display: none; }

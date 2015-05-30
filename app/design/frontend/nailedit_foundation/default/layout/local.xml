@@ -20,6 +20,14 @@
         <remove name="checkout.cart.shipping" /> 
         <remove name="left.newsletter" /> 
         <remove name="currency" />
+
+
+         <reference name="head">
+            <action method="removeItem">
+                <type>skin_css</type>
+                <name>css/styles.css</name>
+            </action>
+        </reference>
          
         <reference name="head">
          
@@ -35,15 +43,17 @@
             </action>
 
               <action method="addCss">
-                <stylesheet>css/styles.css</stylesheet>
+                <stylesheet>css/skin.css</stylesheet>
             </action>
              
             <!-- Add extra Global JavaScript -->  
                  
             <action method="addItem">
-                <type>js</type>
-                <name>/nailedit_foundation/jquery.js</name>
-                <params/>
+                <type>js</type><name>nailedit_foundation/jquery.js</name><params/>
+            </action>
+
+            <action method="addItem">
+                <type>js</type><name>nailedit_foundation/vendor/modernizr.js</name><params/>
             </action>
 
 
@@ -72,7 +82,7 @@
         <!--<action method="addItem"><type>skin_js</type><name>js/slick.min.js</name><params/></action>-->
         <!--<action method="addItem"><type>skin_js</type><name>js/tweetcool.js</name><params/></action>-->
         <!--<action method="addItem"><type>skin_js</type><name>js/mag-popup.min.js</name><params/></action>-->
-        <!--<action method="addItem"><type>skin_js</type><name>js/extend.js</name><params/></action>-->
+        <action method="addItem"><type>skin_js</type><name>js/extend.js</name><params/></action>
 
 
         </block>
