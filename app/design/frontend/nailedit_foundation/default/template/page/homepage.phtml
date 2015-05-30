@@ -61,33 +61,62 @@
 
                 </div>
 
-                <!--<div class="homepage-container-1600 row">
+                <div class="homepage-container-1600 row">
                     
-                         <!-- Content 
+                         <!-- Content -->
                         
-                    <?php// echo $this->getChildHtml('content') ?>
+                    <?php echo $this->getChildHtml('content') ?>
 
-                </div>-->
+                </div>
 
                         <!-- Promo Block -->
 
                     
 
-                        <div class="featured_block row">
+                        <div class="featured_block">
 
-                    
+                             <div class="title">
+                             
+                             <ul>
+                                 <li><a class="new-products" href="#"><span>New</span> Products</a></li>
+                                 <li><a class="best-sellers" href="#">Best Sellers</a></li>
+                                 <li><a class="special-offers" href="#"><span>Special</span> Offers</a></li>
+                                 
+                             </ul>
+                            
+                             </div>
+
+                             <div class="homepage-container-1400 row">
 
                              <div class="large-12 columns">
-                                
-                                <?php // echo $this->getLayout()->createBlock('cms/block')->setBlockId('featured-products')->toHtml(); ?>           
-                        
-                                <?php// echo $this->getLayout()->createBlock('cms/block')->setBlockId('new-products')->toHtml(); ?>
-                                
-                                <?php // echo $this->getLayout()->createBlock('cms/block')->setBlockId('most-viewed')->toHtml(); ?>
-                                
-                                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('best-sellers')->toHtml(); ?>
+                           
+                                 <div class="items-featured">
 
-                             
+                                 <div class="multiple-items-featured">
+                                  <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('home_special_offers')->toHtml(); ?>
+                                 </div>
+
+                                 </div>
+
+                                <div class="items-new">
+
+                                <div class="multiple-items-new">
+                                 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('home_new_products')->toHtml(); ?>
+                                 </div>
+
+                                 </div>
+
+                                 <div class="items-best">
+
+                                 <div class="multiple-items-best">
+                                 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('home_best_sellers')->toHtml(); ?>
+                        
+                                 </div>
+
+                                 </div>
+
+                             </div>
+
                              </div>
 
                          </div>
@@ -95,6 +124,46 @@
                 
                          
                          <!-- Latest Offers -->
+
+                <div class="promotions_block">
+
+                    <div class="homepage-container-1400 row">
+
+                        <div class="large-12 columns">
+
+                            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('latest_offers')->toHtml();?>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="homepage-container-1400 info_block row">
+
+                        <div class="medium-3 columns twitter">
+
+                        <h3>Latest Tweets</h3>
+
+                        <div id="tweecool"></div>
+
+                        </div>
+
+                        <div class="medium-6 columns about_block">
+
+                        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('home-about')->toHtml();?>
+
+                        </div>
+
+                        <div class="medium-3 columns blog">
+
+                        <h3>Blog</h3>
+
+                        Blog Here
+
+                        </div>
+
+                </div>
 
 
         </div>
