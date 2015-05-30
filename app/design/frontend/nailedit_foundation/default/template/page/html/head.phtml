@@ -34,16 +34,15 @@
 <link rel="shortcut icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
 
 <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,600' rel='stylesheet' type='text/css'>
 
  <!-- Mobile Specific Metas -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
 		<!-- Favicons -->
-		<link rel="shortcut icon" href="<?php echo $this->getSkinUrl('/img/favicon.ico') ?>">
-		<link rel="apple-touch-icon" href="<?php echo $this->getSkinUrl('/img/apple-touch-icon.png') ?>">
-		<link rel="apple-touch-icon" sizes="72x72" href="<?php echo $this->getSkinUrl('/img/apple-touch-icon-72x72.png') ?>">
-		<link rel="apple-touch-icon" sizes="114x114" href="<?php echo $this->getSkinUrl('/img/apple-touch-icon-114x114.png') ?>">
+		<link rel="shortcut icon" href="<?php echo $this->getSkinUrl('img/favicon.ico') ?>">
+		<link rel="apple-touch-icon" href="<?php echo $this->getSkinUrl('img/apple-touch-icon.png') ?>">
+		<link rel="apple-touch-icon" sizes="72x72" href="<?php echo $this->getSkinUrl('img/apple-touch-icon-72x72.png') ?>">
+		<link rel="apple-touch-icon" sizes="114x114" href="<?php echo $this->getSkinUrl('img/apple-touch-icon-114x114.png') ?>">
        
 
 <!--[if lt IE 7]>
@@ -58,3 +57,34 @@
 <?php echo $this->getChildHtml() ?>
 <?php echo $this->helper('core/js')->getTranslatorScript() ?>
 <?php echo $this->getIncludes() ?>
+
+<?php /* Open Graph Protocol for Facebook and SEO START */ ?>
+<?php if(Mage::registry('current_product')): ?>
+ <?php $product = Mage::registry('current_product'); ?>
+ <meta property="og:title" content="<?php echo ($product->getName()); ?>" />
+ <meta property="og:type" content="product" />
+ <meta property="og:image" content="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(200,200);?>" />
+ <meta property="og:url" content="<?php echo Mage::registry('product')->getProductUrl(); ?>" />
+ <meta property="og:description" content="<?php echo strip_tags(($product->getShortDescription())); ?>" />
+ <meta property="og:site_name" content="<?php echo Mage::app()->getStore()->getName(); ?>" />
+<?php elseif(Mage::registry('current_category')): ?>
+ <meta property="og:title" content="<?php echo $this->getTitle() ?>" />
+ <meta property="og:type" content="product.group" />
+ <meta property="og:url" content="<?php echo $this->helper('core/url')->getCurrentUrl();?>" />
+ <meta property="og:description" content="<?php echo strip_tags($this->getDescription()) ?>" />
+ <meta property="og:site_name" content="<?php echo Mage::app()->getStore()->getName(); ?>" />
+<?php elseif((Mage::getSingleton('cms/page')->getIdentifier() == 'home' &&
+ Mage::app()->getFrontController()->getRequest()->getRouteName() == 'cms')) : ?>
+ <meta property="og:title" content="<?php echo $this->getTitle() ?>" />
+ <meta property="og:type" content="website" />
+ <meta property="og:url" content="<?php echo $this->helper('core/url')->getCurrentUrl();?>" />
+ <meta property="og:description" content="<?php echo strip_tags($this->getDescription()) ?>" />
+ <meta property="og:site_name" content="<?php echo Mage::app()->getStore()->getName(); ?>" />
+<?php else: ?>
+ <meta property="og:title" content="<?php echo $this->getTitle() ?>" />
+ <meta property="og:type" content="article" />
+ <meta property="og:url" content="<?php echo $this->helper('core/url')->getCurrentUrl();?>" />
+ <meta property="og:description" content="<?php echo strip_tags($this->getDescription()) ?>" />
+ <meta property="og:site_name" content="<?php echo Mage::app()->getStore()->getName(); ?>" />
+<?php endif; ?>
+<?php /* Open Graph Protocol for Facebook and SEO END */ ?>
