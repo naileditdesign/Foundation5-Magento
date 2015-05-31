@@ -42,6 +42,10 @@
                 <stylesheet>css/normalize.css</stylesheet>
             </action>
 
+            <action method="addCss">
+                <stylesheet>css/font-awesome.min.css</stylesheet>
+            </action>
+
               <action method="addCss">
                 <stylesheet>css/skin.css</stylesheet>
             </action>
@@ -77,11 +81,11 @@
 
         <reference name="before_body_end">
         <block type="page/html_head" name="extra_js" as="extraJs" after="-" template="page/html/footer/extras.phtml">
-            <action method="addItem"><type>js</type><name>js/foundation.min.js</name></action>
-
-        <!--<action method="addItem"><type>skin_js</type><name>js/slick.min.js</name><params/></action>-->
-        <!--<action method="addItem"><type>skin_js</type><name>js/tweetcool.js</name><params/></action>-->
-        <!--<action method="addItem"><type>skin_js</type><name>js/mag-popup.min.js</name><params/></action>-->
+        <action method="addItem"><type>skin_js</type><name>js/foundation.min.js</name><params/></action>
+          
+        <action method="addItem"><type>skin_js</type><name>js/slick.min.js</name><params/></action>
+        <action method="addItem"><type>skin_js</type><name>js/tweetcool.js</name><params/></action>
+        <action method="addItem"><type>skin_js</type><name>js/mag-popup.min.js</name><params/></action>
         <action method="addItem"><type>skin_js</type><name>js/extend.js</name><params/></action>
 
 
