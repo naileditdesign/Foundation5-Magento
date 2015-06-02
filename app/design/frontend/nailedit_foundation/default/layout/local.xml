@@ -43,7 +43,7 @@
             </action>
 
             <action method="addCss">
-                <stylesheet>css/font-awesome.min.css</stylesheet>
+                <stylesheet>css/font-awesome.css</stylesheet>
             </action>
 
               <action method="addCss">

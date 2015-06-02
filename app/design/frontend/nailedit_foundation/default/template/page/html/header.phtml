@@ -71,7 +71,9 @@
 
         <li class="cart">
           <a href="<?php echo $this->getUrl('') ?>checkout/cart" class="bask_price">
+           <i class="fa fa-shopping-cart"></i>
             <span class="icon">
+           
               <?php $cart = Mage::getModel('checkout/cart')->getQuote()->getData();if(isset($cart['items_qty'])){echo (int)$cart['items_qty'];}else {echo '0';}?> 
             </span>
             <span>
@@ -88,6 +90,7 @@
 
         <li class="cart">
           <a href="<?php echo $this->getUrl('') ?>checkout/cart" class="bask_price">
+          <i class="fa fa-shopping-cart"></i>
             <span class="icon">
               <?php $cart = Mage::getModel('checkout/cart')->getQuote()->getData();if(isset($cart['items_qty'])){echo (int)$cart['items_qty'];}else {echo '0';}?> 
             </span>
